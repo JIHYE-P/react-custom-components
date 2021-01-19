@@ -3,7 +3,7 @@ import styled, {keyframes} from 'styled-components';
 
 const Button = styled.button`
   position: relative;
-  min-width: 64px;
+  min-width: 150px;
   margin: 8px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
