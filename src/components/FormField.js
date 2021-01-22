@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import RippleButton from './RippleButton';
 import { withFormComponent } from '../utils/context';
 
 const StyledField = styled.div`
@@ -9,6 +10,7 @@ const StyledField = styled.div`
     width: 100%;
     padding: 12px 20px;
     font-size: 15px;
+    box-sizing: border-box;
     border-radius: 8px;
     border: 1px solid ${({isValid}) => isValid ? '#d32f2f' : 'transparent'};
     background: #ecf0f3;
@@ -18,13 +20,14 @@ const StyledField = styled.div`
     font-size: 13px;
     margin-top: 5px;
     padding-left: 10px;
+    box-sizing: border-box;
     text-transform: capitalize;
     color: #d32f2f;
     text-align: left;
   }
 `;
 
-const FormField = ({type, name, placeholder, isValid, setIsValid, validation, feedback}) => {
+export const FormField = withFormComponent(({type, name, placeholder, isValid, setIsValid, validation, feedback}) => {
   return <StyledField isValid={isValid} >
     <input 
       type={type} 
@@ -34,9 +37,12 @@ const FormField = ({type, name, placeholder, isValid, setIsValid, validation, fe
     />
     {isValid ? <p className="feedback">{feedback}</p> : null}
   </StyledField>
-}
+});
 
-export default withFormComponent(FormField)
+export const SubmitButton = withFormComponent(({onSubmit, ...props}) => {
+  return <RippleButton {...props} onClick={onSubmit} />
+})
+
 
 
 

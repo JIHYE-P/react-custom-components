@@ -1,6 +1,4 @@
 import { createContext, useState } from "react";
-import styled from "styled-components";
-import Form from "../components/Form";
 
 const FormContext = createContext();
 
@@ -25,7 +23,7 @@ export const withFormComponent = Component => props => {
         return getValid;
       }
       : () => true;
-      console.log(state);
+      
       return <Component {...props} 
         isValid={isValid}
         setIsValid={setIsValid}
