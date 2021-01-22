@@ -2,8 +2,8 @@ import { createContext, useState } from "react";
 
 const FormContext = createContext();
 
-export const FormProvider = ({...props}) => {
-  const [state, setState] = useState({});
+export const FormProvider = ({initState, ...props}) => {
+  const [state, setState] = useState(initState);
   return <FormContext.Provider {...props}
     value={{
       state,
@@ -23,12 +23,16 @@ export const withFormComponent = Component => props => {
         return getValid;
       }
       : () => true;
-      
+
       return <Component {...props} 
         isValid={isValid}
         setIsValid={setIsValid}
         validation={validation}
-        onSubmit={() => console.log('?')} 
+        onSubmit={() => {
+          for (const key in state) {
+            state[key] ? console.log('true', key) : console.log('false', key)
+          }
+        }} 
       />
     }}
   </FormContext.Consumer>

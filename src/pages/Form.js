@@ -20,11 +20,17 @@ const StyledButton = styled(SubmitButton)`
   }
 `;
 
+const initState = {
+  name: false,
+  password: false,
+  phone: false,
+  email: false
+}
 const Form = () => {
   return <main>
     <h3>1. Form Validation</h3>
     <Section>
-      <FormProvider>
+      <FormProvider initState={initState}>
         <FormField 
           type="text" 
           name="name" 
