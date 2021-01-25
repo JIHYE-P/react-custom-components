@@ -29,9 +29,7 @@ export const withFormComponent = Component => props => {
         setIsValid={setIsValid}
         validation={validation}
         onSubmit={() => {
-          for (const key in state) {
-            state[key] ? console.log('true', key) : console.log('false', key)
-          }
+          console.log('function onSubmit', state)
         }} 
       />
     }}

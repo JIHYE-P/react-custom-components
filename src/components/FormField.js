@@ -41,11 +41,4 @@ export const FormField = withFormComponent(({type, name, placeholder, isValid, s
 
 export const SubmitButton = withFormComponent(({onSubmit, ...props}) => {
   return <RippleButton {...props} onClick={onSubmit} />
-})
-
-
-
-
-
-  
-
+});
